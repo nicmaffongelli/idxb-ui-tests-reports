@@ -1,0 +1,12 @@
+{
+  status: 200,
+  body: {
+    total: 3,
+    first: 'https://api.idxstaging.com/leads/lead?offset=0',
+    last: 'https://api.idxstaging.com/leads/lead?offset=0',
+    next: null,
+    previous: null,
+    data: [ [Object], [Object], [Object] ]
+  }
+}
+20

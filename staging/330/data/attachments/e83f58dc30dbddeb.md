@@ -1,0 +1,1091 @@
+# Test info
+
+- Name: Create a Showcase Legacy Widget with Custom Search and delete it after the test >> Create Showcase Legacy Widget with Custom Search - User: Client-Engage-1-Existing
+- Location: /opt/atlassian/pipelines/agent/build/src/tests/specs/clients/06_design/03_widgets/legacyWidgets.spec.ts:13:13
+
+# Error details
+
+```
+TimeoutError: page.waitForEvent: Timeout 20000ms exceeded while waiting for event "popup"
+=========================== logs ===========================
+waiting for event "popup"
+============================================================
+    at AddLegacyWidgetPage.previewWidgetAndGetId (/opt/atlassian/pipelines/agent/build/src/page-objects/client/06_design/03_widgets/AddLegacyWidgetPage.ts:442:39)
+    at /opt/atlassian/pipelines/agent/build/src/tests/specs/clients/06_design/03_widgets/legacyWidgets.spec.ts:22:63
+```
+
+# Page snapshot
+
+```yaml
+- navigation:
+  - link "IDX Broker":
+    - /url: /mgmt/dashboard
+    - img "IDX Broker"
+  - list:
+    - listitem:
+      - text: Staging
+      - strong: "Signed in as:"
+      - text: Nic (3978)
+    - listitem:
+      - img
+- text: Notifications
+- strong: You’re all caught up! Keep an eye out for new notifications. We’ll post them here.
+- navigation:
+  - list:
+    - listitem: Home +
+    - listitem: Leads +
+    - listitem: Listings +
+    - listitem: Messages +
+    - listitem:
+      - link "MLS":
+        - /url: /mgmt/mls-membership
+    - listitem: Design -
+    - listitem: Account +
+    - listitem: Support +
+- listitem:
+  - link "Page Help":
+    - /url: "#"
+- heading "Add Widget" [level=1]
+- link "View All":
+  - /url: /mgmt/widgets
+- heading "Build a widget" [level=3]
+- paragraph: Choose the basic options for creating a widget.
+- button "Showcase" [disabled]
+- button "Custom Search" [disabled]
+- link "Advanced Search":
+  - /url: javascript:void(0)
+- button "Advanced Search" [disabled]
+- combobox [disabled]:
+  - option
+  - option "Address"
+  - option "Advanced Search" [selected]
+  - option "AI Smart Search"
+  - option "Basic Search"
+  - option "Email Update Signup"
+  - option "Listing ID"
+- text: 1 Properties to feature based on results Property Type
+- link "Residential":
+  - /url: javascript:void(0)
+- text: Property Type
+- button "Residential" [disabled]
+- combobox "Property Type" [disabled]:
+  - option
+  - option "Residential" [selected]
+  - option "Commercial Sale"
+  - option "Land"
+  - option "Multi Family"
+- text: Property Sub Type
+- list:
+  - listitem:
+    - text: Property Sub Type
+    - textbox "Property Sub Type" [disabled]
+- listbox "Property Sub Type" [disabled]:
+  - option
+  - option "Attached"
+  - option "Co-op Housing"
+  - option "Condominium"
+  - option "Floating Home"
+  - option "FloatingHome"
+  - option "Manufactured Home in Park"
+  - option "Manufactured Home on Real Property"
+  - option "ManufacturedHomeinPark"
+  - option "ManufacturedHomeonRealProperty"
+  - option "Partially Owned"
+  - option "PartiallyOwned"
+  - option "Planned Community"
+  - option "PlannedCommunity"
+  - option "Single Family Residence"
+  - option "SingleFamilyResidence"
+- text: Status
+- list:
+  - listitem: "Status: Active"
+  - listitem:
+    - text: Status
+    - textbox "Status" [disabled]
+- listbox "Status" [disabled]:
+  - option
+  - option "Active" [selected]
+  - option "Bumpable Buyer"
+  - option "Pending"
+  - option "Short Sale Pending"
+  - option "Sold"
+- text: City, County, Postal Code
+- list:
+  - listitem: Portland
+  - listitem:
+    - text: City, County, Postal Code
+    - textbox "City, County, Postal Code" [disabled]
+- listbox "City, County, Postal Code" [disabled]:
+  - group:
+    - option "Portland" [selected]
+  - group:
+    - option "Adams"
+    - option "Asotin"
+    - option "Baker"
+    - option "Benton"
+    - option "Clackamas"
+    - option "Clallam"
+    - option "Clark"
+    - option "Clatsop"
+    - option "Columbia"
+    - option "Columbia"
+    - option "Coos"
+    - option "Cowlitz"
+    - option "Crook"
+    - option "Curry"
+    - option "Deschutes"
+    - option "Douglas"
+    - option "Franklin"
+    - option "Garfield"
+    - option "Gilliam"
+    - option "Grant"
+    - option "Grays Harbor"
+    - option "Harney"
+    - option "Hood River"
+    - option "Island"
+    - option "Jackson"
+    - option "Jefferson"
+    - option "Josephine"
+    - option "King"
+    - option "Kitsap"
+    - option "Kittitas"
+    - option "Klamath"
+    - option "Klickitat"
+    - option "Lake"
+    - option "Lane"
+    - option "Lewis"
+    - option "Lincoln"
+    - option "Linn"
+    - option "Malheur"
+    - option "Marion"
+    - option "Mason"
+    - option "Morrow"
+    - option "Multnomah"
+    - option "Okanogan"
+    - option "Pacific"
+    - option "Pierce"
+    - option "Polk"
+    - option "Sherman"
+    - option "Skagit"
+    - option "Skamania"
+    - option "Snohomish"
+    - option "Spokane"
+    - option "Stevens"
+    - option "Thurston"
+    - option "Tillamook"
+    - option "Umatilla"
+    - option "Union"
+    - option "Wahkiakum"
+    - option "Walla Walla"
+    - option "Wallowa"
+    - option "Wasco"
+    - option "Washington"
+    - option "Wheeler"
+    - option "Yakima"
+    - option "Yamhill"
+  - group:
+    - option "97001"
+    - option "97002"
+    - option "97003"
+    - option "97004"
+    - option "97005"
+    - option "97006"
+    - option "97007"
+    - option "97008"
+    - option "97009"
+    - option "97011"
+    - option "97013"
+    - option "97014"
+    - option "97015"
+    - option "97016"
+    - option "97017"
+    - option "97018"
+    - option "97019"
+    - option "97020"
+    - option "97021"
+    - option "97022"
+    - option "97023"
+    - option "97024"
+    - option "97026"
+    - option "97027"
+    - option "97028"
+    - option "97029"
+    - option "97030"
+    - option "97031"
+    - option "97032"
+    - option "97033"
+    - option "97034"
+    - option "97035"
+    - option "97037"
+    - option "97038"
+    - option "97039"
+    - option "97040"
+    - option "97041"
+    - option "97042"
+    - option "97044"
+    - option "97045"
+    - option "97048"
+    - option "97049"
+    - option "97050"
+    - option "97051"
+    - option "97053"
+    - option "97054"
+    - option "97055"
+    - option "97056"
+    - option "97057"
+    - option "97058"
+    - option "97060"
+    - option "97062"
+    - option "97063"
+    - option "97064"
+    - option "97065"
+    - option "97067"
+    - option "97068"
+    - option "97070"
+    - option "97071"
+    - option "97078"
+    - option "97080"
+    - option "97086"
+    - option "97089"
+    - option "97101"
+    - option "97102"
+    - option "97103"
+    - option "97106"
+    - option "97107"
+    - option "97108"
+    - option "97109"
+    - option "97110"
+    - option "97111"
+    - option "97112"
+    - option "97113"
+    - option "97114"
+    - option "97115"
+    - option "97116"
+    - option "97117"
+    - option "97118"
+    - option "97119"
+    - option "97121"
+    - option "97122"
+    - option "97123"
+    - option "97124"
+    - option "97125"
+    - option "97127"
+    - option "97128"
+    - option "97130"
+    - option "97131"
+    - option "97132"
+    - option "97133"
+    - option "97134"
+    - option "97135"
+    - option "97136"
+    - option "97137"
+    - option "97138"
+    - option "97140"
+    - option "97141"
+    - option "97143"
+    - option "97144"
+    - option "97146"
+    - option "97147"
+    - option "97148"
+    - option "97149"
+    - option "97201"
+    - option "97202"
+    - option "97203"
+    - option "97204"
+    - option "97205"
+    - option "97206"
+    - option "97207"
+    - option "97209"
+    - option "97210"
+    - option "97211"
+    - option "97212"
+    - option "97213"
+    - option "97214"
+    - option "97215"
+    - option "97216"
+    - option "97217"
+    - option "97218"
+    - option "97219"
+    - option "97220"
+    - option "97221"
+    - option "97222"
+    - option "97223"
+    - option "97224"
+    - option "97225"
+    - option "97227"
+    - option "97229"
+    - option "97230"
+    - option "97231"
+    - option "97232"
+    - option "97233"
+    - option "97236"
+    - option "97239"
+    - option "97256"
+    - option "97258"
+    - option "97266"
+    - option "97267"
+    - option "97269"
+    - option "97301"
+    - option "97302"
+    - option "97303"
+    - option "97304"
+    - option "97305"
+    - option "97306"
+    - option "97317"
+    - option "97321"
+    - option "97322"
+    - option "97324"
+    - option "97325"
+    - option "97326"
+    - option "97327"
+    - option "97329"
+    - option "97330"
+    - option "97333"
+    - option "97335"
+    - option "97336"
+    - option "97338"
+    - option "97339"
+    - option "97341"
+    - option "97342"
+    - option "97343"
+    - option "97344"
+    - option "97345"
+    - option "97346"
+    - option "97347"
+    - option "97348"
+    - option "97350"
+    - option "97351"
+    - option "97352"
+    - option "97355"
+    - option "97357"
+    - option "97358"
+    - option "97360"
+    - option "97361"
+    - option "97362"
+    - option "97364"
+    - option "97365"
+    - option "97366"
+    - option "97367"
+    - option "97368"
+    - option "97369"
+    - option "97370"
+    - option "97371"
+    - option "97374"
+    - option "97375"
+    - option "97376"
+    - option "97377"
+    - option "97378"
+    - option "97380"
+    - option "97381"
+    - option "97383"
+    - option "97384"
+    - option "97385"
+    - option "97386"
+    - option "97388"
+    - option "97389"
+    - option "97390"
+    - option "97391"
+    - option "97392"
+    - option "97394"
+    - option "97396"
+    - option "97401"
+    - option "97402"
+    - option "97403"
+    - option "97404"
+    - option "97405"
+    - option "97406"
+    - option "97408"
+    - option "97410"
+    - option "97411"
+    - option "97412"
+    - option "97413"
+    - option "97414"
+    - option "97415"
+    - option "97416"
+    - option "97417"
+    - option "97419"
+    - option "97420"
+    - option "97423"
+    - option "97424"
+    - option "97425"
+    - option "97426"
+    - option "97429"
+    - option "97430"
+    - option "97431"
+    - option "97432"
+    - option "97434"
+    - option "97435"
+    - option "97436"
+    - option "97437"
+    - option "97438"
+    - option "97439"
+    - option "97441"
+    - option "97442"
+    - option "97443"
+    - option "97444"
+    - option "97446"
+    - option "97447"
+    - option "97448"
+    - option "97449"
+    - option "97450"
+    - option "97451"
+    - option "97452"
+    - option "97453"
+    - option "97454"
+    - option "97455"
+    - option "97456"
+    - option "97457"
+    - option "97458"
+    - option "97459"
+    - option "97461"
+    - option "97462"
+    - option "97463"
+    - option "97464"
+    - option "97465"
+    - option "97466"
+    - option "97467"
+    - option "97469"
+    - option "97470"
+    - option "97471"
+    - option "97473"
+    - option "97475"
+    - option "97476"
+    - option "97477"
+    - option "97478"
+    - option "97479"
+    - option "97480"
+    - option "97481"
+    - option "97484"
+    - option "97486"
+    - option "97487"
+    - option "97488"
+    - option "97489"
+    - option "97490"
+    - option "97492"
+    - option "97493"
+    - option "97494"
+    - option "97495"
+    - option "97496"
+    - option "97497"
+    - option "97498"
+    - option "97499"
+    - option "97501"
+    - option "97502"
+    - option "97503"
+    - option "97504"
+    - option "97520"
+    - option "97523"
+    - option "97524"
+    - option "97525"
+    - option "97526"
+    - option "97527"
+    - option "97530"
+    - option "97531"
+    - option "97532"
+    - option "97534"
+    - option "97535"
+    - option "97537"
+    - option "97538"
+    - option "97539"
+    - option "97540"
+    - option "97541"
+    - option "97543"
+    - option "97544"
+    - option "97601"
+    - option "97603"
+    - option "97621"
+    - option "97622"
+    - option "97623"
+    - option "97624"
+    - option "97625"
+    - option "97626"
+    - option "97630"
+    - option "97632"
+    - option "97636"
+    - option "97637"
+    - option "97638"
+    - option "97639"
+    - option "97640"
+    - option "97641"
+    - option "97701"
+    - option "97702"
+    - option "97703"
+    - option "97707"
+    - option "97711"
+    - option "97712"
+    - option "97720"
+    - option "97731"
+    - option "97733"
+    - option "97734"
+    - option "97735"
+    - option "97737"
+    - option "97738"
+    - option "97739"
+    - option "97741"
+    - option "97750"
+    - option "97753"
+    - option "97754"
+    - option "97756"
+    - option "97759"
+    - option "97760"
+    - option "97801"
+    - option "97810"
+    - option "97812"
+    - option "97813"
+    - option "97814"
+    - option "97817"
+    - option "97818"
+    - option "97819"
+    - option "97820"
+    - option "97823"
+    - option "97824"
+    - option "97825"
+    - option "97826"
+    - option "97827"
+    - option "97828"
+    - option "97830"
+    - option "97833"
+    - option "97834"
+    - option "97835"
+    - option "97836"
+    - option "97837"
+    - option "97838"
+    - option "97839"
+    - option "97840"
+    - option "97841"
+    - option "97842"
+    - option "97843"
+    - option "97844"
+    - option "97845"
+    - option "97846"
+    - option "97848"
+    - option "97850"
+    - option "97856"
+    - option "97857"
+    - option "97859"
+    - option "97862"
+    - option "97864"
+    - option "97865"
+    - option "97867"
+    - option "97868"
+    - option "97869"
+    - option "97870"
+    - option "97873"
+    - option "97874"
+    - option "97875"
+    - option "97876"
+    - option "97877"
+    - option "97880"
+    - option "97882"
+    - option "97883"
+    - option "97884"
+    - option "97885"
+    - option "97886"
+    - option "97905"
+    - option "97907"
+    - option "97911"
+    - option "97913"
+    - option "97914"
+    - option "97918"
+    - option "97999"
+    - option "98001"
+    - option "98002"
+    - option "98003"
+    - option "98010"
+    - option "98023"
+    - option "98042"
+    - option "98058"
+    - option "98070"
+    - option "98082"
+    - option "98092"
+    - option "98116"
+    - option "98221"
+    - option "98223"
+    - option "98232"
+    - option "98252"
+    - option "98253"
+    - option "98257"
+    - option "98274"
+    - option "98303"
+    - option "98304"
+    - option "98310"
+    - option "98326"
+    - option "98328"
+    - option "98329"
+    - option "98338"
+    - option "98346"
+    - option "98356"
+    - option "98359"
+    - option "98360"
+    - option "98366"
+    - option "98370"
+    - option "98373"
+    - option "98377"
+    - option "98383"
+    - option "98387"
+    - option "98391"
+    - option "98404"
+    - option "98405"
+    - option "98406"
+    - option "98409"
+    - option "98424"
+    - option "98467"
+    - option "98499"
+    - option "98503"
+    - option "98506"
+    - option "98509"
+    - option "98511"
+    - option "98512"
+    - option "98513"
+    - option "98520"
+    - option "98527"
+    - option "98531"
+    - option "98532"
+    - option "98535"
+    - option "98537"
+    - option "98538"
+    - option "98541"
+    - option "98542"
+    - option "98546"
+    - option "98550"
+    - option "98562"
+    - option "98563"
+    - option "98564"
+    - option "98565"
+    - option "98569"
+    - option "98570"
+    - option "98572"
+    - option "98576"
+    - option "98577"
+    - option "98579"
+    - option "98580"
+    - option "98581"
+    - option "98582"
+    - option "98584"
+    - option "98586"
+    - option "98588"
+    - option "98591"
+    - option "98593"
+    - option "98595"
+    - option "98596"
+    - option "98597"
+    - option "98601"
+    - option "98602"
+    - option "98603"
+    - option "98604"
+    - option "98605"
+    - option "98606"
+    - option "98607"
+    - option "98610"
+    - option "98611"
+    - option "98612"
+    - option "98613"
+    - option "98614"
+    - option "98616"
+    - option "98617"
+    - option "98619"
+    - option "98620"
+    - option "98623"
+    - option "98624"
+    - option "98625"
+    - option "98626"
+    - option "98628"
+    - option "98629"
+    - option "98631"
+    - option "98632"
+    - option "98635"
+    - option "98638"
+    - option "98639"
+    - option "98640"
+    - option "98641"
+    - option "98642"
+    - option "98644"
+    - option "98645"
+    - option "98647"
+    - option "98648"
+    - option "98649"
+    - option "98650"
+    - option "98651"
+    - option "98660"
+    - option "98661"
+    - option "98662"
+    - option "98663"
+    - option "98664"
+    - option "98665"
+    - option "98670"
+    - option "98671"
+    - option "98672"
+    - option "98673"
+    - option "98674"
+    - option "98675"
+    - option "98682"
+    - option "98683"
+    - option "98684"
+    - option "98685"
+    - option "98686"
+    - option "98844"
+    - option "98903"
+    - option "98926"
+    - option "99006"
+    - option "99009"
+    - option "99114"
+    - option "99173"
+    - option "99301"
+    - option "99322"
+    - option "99324"
+    - option "99328"
+    - option "99341"
+    - option "99347"
+    - option "99356"
+    - option "99362"
+    - option "99403"
+- text: Min Price
+- 'link "Min Price: $500,000"':
+  - /url: javascript:void(0)
+- text: Min Price
+- 'button "Min Price: $500,000" [disabled]'
+- textbox "Min Price" [disabled]: "500000"
+- text: Max Price
+- link "Max Price":
+  - /url: javascript:void(0)
+- text: Max Price
+- button "Max Price" [disabled]
+- textbox "Max Price" [disabled]
+- text: Bedrooms
+- link "Bedrooms":
+  - /url: javascript:void(0)
+- text: Bedrooms
+- button "Bedrooms" [disabled]
+- combobox "Bedrooms" [disabled]:
+  - option [selected]
+  - option "Any Number"
+  - option "Studio"
+  - option "1+"
+  - option "2+"
+  - option "3+"
+  - option "4+"
+  - option "5+"
+  - option "6+"
+  - option "7+"
+  - option "8+"
+  - option "9+"
+  - option "10+"
+- text: Bathrooms
+- link "Bathrooms":
+  - /url: javascript:void(0)
+- text: Bathrooms
+- button "Bathrooms" [disabled]
+- combobox "Bathrooms" [disabled]:
+  - option [selected]
+  - option "Any Number"
+  - option "1+"
+  - option "2+"
+  - option "3+"
+  - option "4+"
+  - option "5+"
+  - option "6+"
+  - option "7+"
+  - option "8+"
+  - option "9+"
+  - option "10+"
+- text: SqFt
+- link "SqFt":
+  - /url: javascript:void(0)
+- text: SqFt
+- button "SqFt" [disabled]
+- textbox "SqFt" [disabled]
+- text: ac
+- link "ac":
+  - /url: javascript:void(0)
+- text: ac
+- button "ac" [disabled]
+- textbox "ac" [disabled]
+- text: Price Reduction
+- link "Price Reduced":
+  - /url: javascript:void(0)
+- text: Price Reduction
+- button "Price Reduced" [disabled]
+- combobox "Price Reduction" [disabled]:
+  - option [selected]
+  - option "In the last day"
+  - option "In the last 3 days"
+  - option "In the last 7 days"
+  - option "In the last 2 weeks"
+  - option "In the last month"
+- text: Max Days Listed
+- link "Max Days Listed":
+  - /url: javascript:void(0)
+- text: Max Days Listed
+- button "Max Days Listed" [disabled]
+- textbox "Max Days Listed" [disabled]
+- text: Refinement
+- list:
+  - listitem:
+    - text: Refinement
+    - textbox "Refinement" [disabled]: Image, Virtual Tour, Virtual Open House, Open House, Featured
+- listbox "Refinement" [disabled]:
+  - option "Has Image"
+  - option "Has Virtual Tour"
+  - option "Has Open House"
+  - option "Has Virtual Open House"
+  - option "Featured Listings"
+- text: Results per page
+- link "Results per page":
+  - /url: javascript:void(0)
+- text: Results per page
+- button "Results per page" [disabled]
+- combobox "Results per page" [disabled]:
+  - option [selected]
+  - option "5"
+  - option "10"
+  - option "25"
+  - option "50"
+  - option "100"
+- button "Reset" [disabled]
+- button "View Results in New Window" [disabled]
+- text: Bedrooms
+- textbox "Min Bedrooms" [disabled]
+- text: to
+- textbox "Max Bedrooms" [disabled]
+- text: Year Built
+- textbox "Min Year Built" [disabled]
+- text: to
+- textbox "Max Year Built" [disabled]
+- text: Widget Options showcase v1.006 Responsive
+- radio "No" [disabled]
+- text: "No"
+- radio "Yes" [checked] [disabled]
+- text: Yes Widget Name*
+- textbox [disabled]: qaautomation1748370206327
+- text: Sorting Order*
+- combobox [disabled]:
+  - option "Newest Listings" [selected]
+  - option "Oldest Listings"
+  - option "Least Expensive to Most"
+  - option "Most Expensive to Least"
+  - option "Bedrooms (Low to High)"
+  - option "Bedrooms (High to Low)"
+  - option "Square Feet (Low to High)"
+  - option "Square Feet (High to Low)"
+  - option "Bathrooms (Low to High)"
+  - option "Bathrooms (High to Low)"
+- text: Width*
+- textbox [disabled]: "100"
+- text: "% # Rows"
+- combobox "# Rows" [disabled]:
+  - option "1"
+  - option "2"
+  - option "#" [selected]
+  - option "4"
+  - option "5"
+  - option "6"
+  - option "7"
+  - option "8"
+  - option "9"
+  - option "10"
+- text: "# Columns"
+- combobox "# Columns" [disabled]:
+  - option "1"
+  - option "2"
+  - option "3" [selected]
+  - option "4"
+  - option "5"
+  - option "6"
+  - option "7"
+  - option "8"
+  - option "9"
+  - option "10"
+- text: "# Listings*"
+- textbox "# Listings*" [disabled]: "100"
+- text: Open Widget Links in a New Window
+- radio "No" [checked] [disabled]
+- text: "No"
+- radio "Yes" [disabled]
+- text: Yes Display View All Results Link
+- radio "No" [checked] [disabled]
+- text: "No"
+- radio "Yes" [disabled]
+- text: "Yes"
+- button "Build Widget"
+- text: "2"
+- heading "Widget Code" [level=3]
+- paragraph: To use the widget you must simply copy and paste the following javascript include into your website source code where you want the widget to display.
+- text: <script charset="UTF-8" type="text/javascript" id="idxwidgetsrc-44903" src="//testing1210plat.idxstaging.com/idx/customshowcasejs.php?widgetid=44903"></script>
+- paragraph:
+  - link "Customize Widget CSS":
+    - /url: "#customizeCSS"
+- heading "Edit CSS" [level=3]
+- textbox: "#IDX-showcaseGallery-44903.IDX-showcaseTable { table-layout:fixed; border-spacing:8px; font-size:11px; } #IDX-showcaseGallery-44903 .IDX-showcaseRow { display:table-row; } #IDX-showcaseGallery-44903 .IDX-showcaseCell { display:table-cell; } #IDX-showcaseGallery-44903 .IDX-showcaseLink { height: 100%; width: 100%; font-size: 0; text-align: center; display: inline-block; } #IDX-showcaseGallery-44903 .IDX-showcaseLink:before { height: 100%; content: \"\"; display: inline-block; vertical-align: middle; } #IDX-showcaseGallery-44903 .IDX-showcasePhoto { max-width: 100%; display: inline-block; vertical-align: middle; } .IDX-showcaseCityStateZip span { white-space: pre; } #IDX-showcaseGallery-44903 .IDX-showcaseCell div {text-align: center;} #IDX-showcaseGallery-44903 .IDX-showcaseListingID, #IDX-showcaseGallery-44903 .IDX-showcaseBeds, #IDX-showcaseGallery-44903 .IDX-showcaseBaths, #IDX-showcaseGallery-44903 .IDX-showcaseFull, #IDX-showcaseGallery-44903 .IDX-showcasePartial, #IDX-showcaseGallery-44903 .IDX-showcaseRemarks, #IDX-showcaseGallery-44903 .IDX-showcaseDisclaimerLink, #IDX-showcaseGallery-44903 .IDX-showcaseStatus, #IDX-showcaseGallery-44903 .IDX-showcaseStateAbrv {display:none;} #IDX-showcaseGallery-44903 .IDX-showcaseContainer {position:relative;}"
+- button "Save CSS Changes"
+- link "Preview widget":
+  - /url: https://testing1210plat.idxstaging.com/idx/widgetpreview.php?widgetid=44903
+- link "Back to Widgets List":
+  - /url: /mgmt/widgets
+  - button "Back to Widgets List"
+- link "Create Another Widget":
+  - /url: /mgmt/widgets/create
+  - button "Create Another Widget"
+- text: "3"
+- paragraph:
+  - text: Services © 2025
+  - link "IDX Broker":
+    - /url: https://www.idxbroker.com
+  - text: . All rights reserved.
+- status: Advanced Search
+- status
+- status
+- status: 5 results are available, use up and down arrow keys to navigate.
+- status
+- status: "Min Price: $500,000"
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+```
+
+# Test source
+
+```ts
+  342 |         if (width) {
+  343 |             await this.widthInput.click();
+  344 |             await this.widthInput.fill(width);
+  345 |         }
+  346 |         
+  347 |         if (height && this.heightInput) {
+  348 |             await this.heightInput.click();
+  349 |             await this.heightInput.fill(height);
+  350 |         }
+  351 |         
+  352 |         await waitForPageToBeFullyLoaded(this.page);
+  353 |     }
+  354 |     
+  355 |     /**
+  356 |      * Build the widget (click the Build Widget button)
+  357 |      */
+  358 |     async buildWidget() {
+  359 |         await this.buildWidgetButton.click();
+  360 |         await waitForPageToBeFullyLoaded(this.page);
+  361 |         
+  362 |         // Wait for widget code to be visible
+  363 |         await this.widgetCodeContainer.waitFor({ state: 'visible' });
+  364 |     }
+  365 |     
+  366 |     /**
+  367 |      * Preview the widget (opens in a new tab)
+  368 |      * @returns The new page object for the preview window
+  369 |      */
+  370 |     async previewWidget() {
+  371 |         const previewPagePromise = this.page.waitForEvent('popup');
+  372 |         await this.previewWidgetButton.click();
+  373 |         return await previewPagePromise;
+  374 |     }
+  375 |     
+  376 |     /**
+  377 |      * Navigate back to the widgets list
+  378 |      */
+  379 |     async backToWidgetsList() {
+  380 |         await this.backToWidgetsListButton.click();
+  381 |         await waitForPageToBeFullyLoaded(this.page);
+  382 |     }
+  383 |     
+  384 |     /**
+  385 |      * Create a showcase widget with custom search (complete flow)
+  386 |      * @param widgetName - Name for the widget
+  387 |      * @param propertyTypes - Array of property types to select
+  388 |      * @param city - City to filter by
+  389 |      * @param minPrice - Minimum price to filter by
+  390 |      */
+  391 |     async createShowcaseWidgetWithCustomSearch(
+  392 |         widgetName: string,
+  393 |         propertyTypes: ('Residential' | 'Land' | 'Commercial Sale' | 'Multi Family')[],
+  394 |         city?: string,
+  395 |         minPrice?: string
+  396 |     ) {
+  397 |         // Select showcase widget type
+  398 |         await this.selectWidgetType('showcase');
+  399 |         
+  400 |         // Select custom search property set
+  401 |         await this.selectPropertySet('customSearch');
+  402 |         
+  403 |         // Select Advanced Search page
+  404 |         await this.selectSearchPage('Advanced Search');
+  405 |         
+  406 |         // Select property types
+  407 |         await this.selectPropertyTypes(propertyTypes);
+  408 |         
+  409 |         // Set status if needed
+  410 |         await this.statusDropdown.click();
+  411 |         await this.activeStatusOption.click();
+  412 |         
+  413 |         // Enter city if provided
+  414 |         if (city) {
+  415 |             await this.enterCity(city);
+  416 |         }
+  417 |         
+  418 |         // Set minimum price if provided
+  419 |         if (minPrice) {
+  420 |             await this.setMinimumPrice(minPrice);
+  421 |         }
+  422 |         
+  423 |         // Click somewhere to ensure focus is lost from dropdowns
+  424 |         await this.searchPrimaryContent.click();
+  425 |         
+  426 |         // Fill out widget form
+  427 |         await this.fillShowcaseWidgetForm(widgetName);
+  428 |         
+  429 |         // Build widget
+  430 |         await this.buildWidget();
+  431 |         
+  432 |         // Return success indicator
+  433 |         return await this.widgetCodeContainer.isVisible();
+  434 |     }
+  435 |
+  436 |     /**
+  437 |      * Click the "Preview widget" button and verify it opens in a new tab
+  438 |      * Returns the ID extracted from the URL
+  439 |      */
+  440 |     async previewWidgetAndGetId(): Promise<string> {
+  441 |         // Wait for the popup event that's triggered when a new tab opens
+> 442 |         const pagePromise = this.page.waitForEvent('popup');
+      |                                       ^ TimeoutError: page.waitForEvent: Timeout 20000ms exceeded while waiting for event "popup"
+  443 |         
+  444 |         // Click the preview button
+  445 |         await this.previewWidgetButton.click();
+  446 |         
+  447 |         // Get the new page object
+  448 |         const newPage = await pagePromise;
+  449 |         
+  450 |         // Wait for the new page to load
+  451 |         await waitForPageToBeFullyLoaded(newPage);
+  452 |         
+  453 |         // Get the URL of the new page
+  454 |         const newUrl = newPage.url();
+  455 |         
+  456 |         // Extract the widget ID from the URL
+  457 |         // This regex pattern assumes the ID is in the URL as a query parameter "widgetid="
+  458 |         const matches = newUrl.match(/widgetid=(\d+)/);
+  459 |         const widgetId = matches ? matches[1] : null;
+  460 |         
+  461 |         if (!widgetId) {
+  462 |         throw new Error(`Could not extract widget ID from URL: ${newUrl}`);
+  463 |         }
+  464 |         
+  465 |         return widgetId;
+  466 |     }
+  467 |     
+  468 |     /**
+  469 |      * Verify widget was created successfully
+  470 |      */
+  471 |     async verifyWidgetCreated() {
+  472 |         await waitForPageToBeFullyLoaded(this.page);
+  473 |         await expect(this.widgetCodeContainer).toBeVisible();
+  474 |         return true;
+  475 |     }
+  476 | }
+```

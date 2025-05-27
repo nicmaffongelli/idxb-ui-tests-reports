@@ -1,0 +1,290 @@
+# Test info
+
+- Name: Run these tests in serial for each client >> Enable Request Registration at page level and validate it on the FE page - User: Client-Elite-1-Existing
+- Location: /opt/atlassian/pipelines/agent/build/src/tests/specs/clients/06_design/02_website/01_pageTemplates/pageLevelLeadRegistration.spec.ts:12:13
+
+# Error details
+
+```
+TimeoutError: page.waitForEvent: Timeout 20000ms exceeded while waiting for event "popup"
+=========================== logs ===========================
+waiting for event "popup"
+============================================================
+    at PagePreferencesPage.goToPage (/opt/atlassian/pipelines/agent/build/src/page-objects/client/06_design/02_website/PagePreferencesPage.ts:106:38)
+    at /opt/atlassian/pipelines/agent/build/src/tests/specs/clients/06_design/02_website/01_pageTemplates/pageLevelLeadRegistration.spec.ts:22:67
+```
+
+# Page snapshot
+
+```yaml
+- navigation:
+  - link "IDX Broker":
+    - /url: /mgmt/dashboard
+    - img "IDX Broker"
+  - list:
+    - listitem:
+      - text: Staging
+      - strong: "Signed in as:"
+      - text: Nic (3979)
+    - listitem:
+      - img
+- text: Notifications
+- strong: You’re all caught up! Keep an eye out for new notifications. We’ll post them here.
+- navigation:
+  - list:
+    - listitem: Home +
+    - listitem: Leads +
+    - listitem: Listings +
+    - listitem: Messages +
+    - listitem:
+      - link "MLS":
+        - /url: /mgmt/mls-membership
+    - listitem: Design -
+    - listitem: Account +
+    - listitem: Support +
+- heading "Page Preferences idx/search/address" [level=1]
+- link "Go to page":
+  - /url: https://testing1210elite.idxstaging.com/idx/search/address
+- list:
+  - listitem:
+    - link "SEO Settings":
+      - /url: "#settings"
+  - listitem:
+    - link "Lead Registration":
+      - /url: "#registration"
+- heading "Lead Registration" [level=2]
+- paragraph: Setup this page and how you want to capture a lead from it.
+- group "Setup":
+  - text: Setup
+  - checkbox "Request Registration" [checked]
+  - text: Request Registration Type
+  - link:
+    - /url: "#"
+  - radio "Recurring" [checked]
+  - text: Recurring
+  - radio "Non-Recurring"
+  - text: Non-Recurring Pages viewable before registration
+  - textbox: "0"
+  - checkbox "Redirect to third party website for registration"
+  - text: Redirect to third party website for registration
+  - link:
+    - /url: "#"
+  - text: Third party website URL
+  - textbox [disabled]
+  - text: Form message
+  - link:
+    - /url: "#"
+  - radio "Default" [checked]
+  - text: Default
+  - radio "Custom"
+  - text: Custom Sign up now! Please register your name and valid email address so that we may provide you with outstanding customer service, or you can skip the registration now and continue viewing the page by closing this modal window or by clicking the following
+  - link "link":
+    - /url: "#"
+  - text: .
+  - checkbox "Force Registration"
+  - text: Force Registration
+  - button "Save Changes"
+- paragraph:
+  - text: Services © 2025
+  - link "IDX Broker":
+    - /url: https://www.idxbroker.com
+  - text: . All rights reserved.
+```
+
+# Test source
+
+```ts
+   6 |   private readonly requestRegistrationCheckbox: Locator;
+   7 |   private readonly pageViewsBeforeRequestInput: Locator;
+   8 |   private readonly saveChangesButton: Locator;
+   9 |   private readonly notificationMessage: Locator;
+   10 |   private readonly goToPageLink: Locator;
+   11 |   private readonly recurringRadioButton: Locator;
+   12 |   private readonly registrationDialogSelector: string;
+   13 |   // Search Setup Tab elements (Added)
+   14 |   private readonly searchSetupTab: Locator;
+   15 |   private readonly cityListDropdown: Locator;
+   16 |   private readonly countyListDropdown: Locator;
+   17 |   private readonly postalCodeListDropdown: Locator;
+   18 |   
+   19 |   /**
+   20 |    * Constructor initializes all page elements
+   21 |    * @param page Playwright page object
+   22 |    */
+   23 |   constructor(page: Page) {
+   24 |     super(page);
+   25 |     
+   26 |     // Tab selectors
+   27 |     this.leadRegistrationTab = page.getByRole('link', { name: 'Lead Registration' });
+   28 |     this.searchSetupTab = page.getByRole('link', { name: 'Search Setup' });
+   29 |     
+   30 |     // Form elements
+   31 |     this.requestRegistrationCheckbox = page.getByRole('checkbox', { name: 'Request Registration' });
+   32 |     this.pageViewsBeforeRequestInput = page.locator('input[name="numPageViewsBeforeRequestRecurringReg"]');
+   33 |     this.recurringRadioButton = page.getByRole('radio', { name: 'Recurring', exact: true });
+   34 |     this.saveChangesButton = page.getByRole('button', { name: 'Save Changes' });
+   35 |     // Search Setup Form elements (Added)
+   36 |     this.cityListDropdown = page.getByLabel('City List');
+   37 |     this.countyListDropdown = page.getByLabel('County List');
+   38 |     this.postalCodeListDropdown = page.getByLabel('Postal Code List');
+   39 |     
+   40 |     // Notification elements
+   41 |     this.notificationMessage = page.locator('#jGrowl');
+   42 |     
+   43 |     // Navigation
+   44 |     this.goToPageLink = page.getByRole('link', { name: 'Go to page' });
+   45 |
+   46 |     // Registration dialog
+   47 |     this.registrationDialogSelector = '#IDX-registrationDefaultMessage';
+   48 |   }
+   49 |
+   50 |   /**
+   51 |    * Navigate to the page preferences for a specific page
+   52 |    * @param pageId The ID of the page to edit
+   53 |    */
+   54 |   async goto(pageId: string): Promise<void> {
+   55 |     await this.page.goto(`${this.globalAndEnvironmentVariables.MW_BASE_URL}/mgmt/page-preferences/${pageId}`);
+   56 |   }
+   57 |   
+   58 |   /**
+   59 |    * Navigate to Lead Registration tab
+   60 |    */
+   61 |   async navigateToLeadRegistrationTab(): Promise<void> {
+   62 |     await this.leadRegistrationTab.click();
+   63 |   }
+   64 |   
+   65 |   /**
+   66 |    * Navigate to Search Setup tab (Added)
+   67 |    */
+   68 |   async navigateToSearchSetupTab(): Promise<void> {
+   69 |     await this.searchSetupTab.click();
+   70 |     // Add a small wait or expect for an element within the tab if needed
+   71 |     await expect(this.cityListDropdown).toBeVisible();
+   72 |   }
+   73 |   
+   74 |   /**
+   75 |    * Enable request registration
+   76 |    * @param pageViews Number of page views before registration (default: 0)
+   77 |    */
+   78 |   async enableRequestRegistration(pageViews = '0'): Promise<void> {
+   79 |     await this.requestRegistrationCheckbox.check();
+   80 |     await waitForPageToBeFullyLoaded(this.page);
+   81 |     await this.recurringRadioButton.click();
+   82 |     await this.pageViewsBeforeRequestInput.click();
+   83 |     await this.pageViewsBeforeRequestInput.fill(pageViews);
+   84 |   }
+   85 |   
+   86 |   /**
+   87 |    * Disable request registration
+   88 |    */
+   89 |   async disableRequestRegistration(): Promise<void> {
+   90 |     await this.requestRegistrationCheckbox.uncheck();
+   91 |   }
+   92 |   
+   93 |   /**
+   94 |    * Save changes
+   95 |    */
+   96 |   async saveChanges(): Promise<void> {
+   97 |     await this.saveChangesButton.click();
+   98 |     await expect(this.notificationMessage).toContainText('Changes saved successfully.');
+   99 |   }
+  100 |   
+  101 |   /**
+  102 |    * Open the actual page in a new tab
+  103 |    * @returns Promise<Page> The new page that opens
+  104 |    */
+  105 |   async goToPage(): Promise<Page> {
+> 106 |     const newPagePromise = this.page.waitForEvent('popup');
+      |                                      ^ TimeoutError: page.waitForEvent: Timeout 20000ms exceeded while waiting for event "popup"
+  107 |     await this.goToPageLink.click();
+  108 |     return newPagePromise;
+  109 |   }
+  110 |   
+  111 |   /**
+  112 |    * Verify registration dialog on the page
+  113 |    * @param page The page to verify
+  114 |    */
+  115 |   async verifyRegistrationDialog(page: Page): Promise<void> {
+  116 |     await expect(page.locator(this.registrationDialogSelector)).toContainText('Please register your name and valid email address so that we may provide you with outstanding customer service');
+  117 |   }
+  118 |
+  119 |   /**
+  120 |    * Verify registration dialog is NOT present on the page
+  121 |    * @param page The page to verify
+  122 |    */
+  123 |   async verifyNoRegistrationDialog(page: Page): Promise<void> {
+  124 |     const isVisible = await page.locator(this.registrationDialogSelector).isVisible()
+  125 |       .catch(() => false); // Returns false if element doesn't exist
+  126 |     
+  127 |     if (isVisible) {
+  128 |       throw new Error('Registration dialog was found but should not be present');
+  129 |     }
+  130 |   }
+  131 |   
+  132 |   /**
+  133 |    * Enable registration, save changes, and verify dialog
+  134 |    * @param pageViews Number of page views before registration (default: 0)
+  135 |    * @returns Promise<Page> The new page that opens
+  136 |    */
+  137 |   async enableRegistrationAndVerify(pageViews = '0'): Promise<Page> {
+  138 |     await this.navigateToLeadRegistrationTab();
+  139 |     await this.enableRequestRegistration(pageViews);
+  140 |     await this.saveChanges();
+  141 |     const newPage = await this.goToPage();
+  142 |     await this.verifyRegistrationDialog(newPage);
+  143 |     return newPage;
+  144 |   }
+  145 |   
+  146 |   /**
+  147 |    * Disable registration and save changes
+  148 |    * @returns Promise<Page> The new page that opens
+  149 |    */
+  150 |   async disableRegistrationAndVerify(): Promise<Page> {
+  151 |     await this.disableRequestRegistration();
+  152 |     await this.saveChanges();
+  153 |     return this.goToPage();
+  154 |   }
+  155 |
+  156 |   /**
+  157 |    * Verifies the selected value in the City List dropdown (Added)
+  158 |    * @param expectedListName - The expected list name (e.g., 'Default MLS List TimeStamp20250430')
+  159 |    */
+  160 |   async verifyCityListSelection(expectedListName: string): Promise<void> {
+  161 |     await expect(this.cityListDropdown).toHaveValue(expectedListName); // Or use toContainText if value attribute is different
+  162 |   }
+  163 |
+  164 |   /**
+  165 |    * Verifies the selected value in the County List dropdown (Added)
+  166 |    * @param expectedListName - The expected list name (e.g., 'Default MLS List')
+  167 |    */
+  168 |   async verifyCountyListSelection(expectedListName: string): Promise<void> {
+  169 |     await expect(this.countyListDropdown).toHaveValue(expectedListName); // Or use toContainText if value attribute is different
+  170 |   }
+  171 |
+  172 |   /**
+  173 |    * Verifies the selected value in the Postal Code List dropdown (Added)
+  174 |    * @param expectedListName - The expected list name (e.g., 'Default MLS List')
+  175 |    */
+  176 |   async verifyPostalCodeListSelection(expectedListName: string): Promise<void> {
+  177 |     await expect(this.postalCodeListDropdown).toHaveValue(expectedListName); // Or use toContainText if value attribute is different
+  178 |   }
+  179 |
+  180 |   /**
+  181 |    * Navigates to Search Setup tab and verifies default list selections (Added)
+  182 |    * @param expectedCityList - Expected text/value for City List dropdown
+  183 |    * @param expectedCountyList - Expected text/value for County List dropdown
+  184 |    * @param expectedPostalCodeList - Expected text/value for Postal Code List dropdown
+  185 |    */
+  186 |   async verifySearchSetupDefaults(
+  187 |     expectedCityList: string,
+  188 |     expectedCountyList: string,
+  189 |     expectedPostalCodeList: string
+  190 |   ): Promise<void> {
+  191 |     await this.navigateToSearchSetupTab();
+  192 |     // Using toContainText as the provided snippet uses it. Adjust if value attribute is more reliable.
+  193 |     await expect(this.cityListDropdown).toContainText(expectedCityList);
+  194 |     await expect(this.countyListDropdown).toContainText(expectedCountyList);
+  195 |     await expect(this.postalCodeListDropdown).toContainText(expectedPostalCodeList);
+  196 |   }
+  197 | }
+```

@@ -1,0 +1,8 @@
+[Request Blocker] Applying global request blocking rules...
+[Request Blocker] Global request blocking rules applied.
+[Request Blocker] ABORTING (domain match: google-analytics.com): https://www.google-analytics.com/analytics.js
+First row ID: 26310
+[Request Blocker] ABORTING (domain match: google-analytics.com): https://www.google-analytics.com/analytics.js
+[Request Blocker] ABORTING (domain match: adasitecompliancetools.com): https://adasitecompliancetools.com/w/IXadapt.js
+[Request Blocker] ABORTING (domain match: google-analytics.com): https://www.google-analytics.com/analytics.js
+[Request Blocker] ABORTING (domain match: translate.googleapis.com): https://translate.googleapis.com/_/translate_http/_/js/k=translate_http.tr.en_US.wX7qQ5EH6oI.O/am=ACA/d=1/exm=el_conf/ed=1/rs=AN8SPfrNtUAtY-e6eilwMrQxoU8LiA-1Hg/m=el_main

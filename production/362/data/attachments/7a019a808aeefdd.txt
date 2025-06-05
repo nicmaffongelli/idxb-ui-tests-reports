@@ -1,4 +1,0 @@
-[Request Blocker] Applying global request blocking rules...
-[Request Blocker] Global request blocking rules applied.
-[Request Blocker] ABORTING (domain match: google-analytics.com): https://www.google-analytics.com/analytics.js
-ID of the first new widget in the list: 104314

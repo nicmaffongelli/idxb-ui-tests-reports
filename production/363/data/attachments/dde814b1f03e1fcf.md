@@ -1,0 +1,295 @@
+# Test info
+
+- Name: MLS Property Type Settings Test - User: Client-Engage-New >> Should change property types order and verify it on front-end search page - User: Client-Engage-New
+- Location: /opt/atlassian/pipelines/agent/build/src/tests/specs/clients/06_design/04_settings/03_mls/propertyTypeMlsSettings.spec.ts:12:13
+
+# Error details
+
+```
+Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: "Land"
+Received: "Multi Family"
+    at /opt/atlassian/pipelines/agent/build/src/tests/specs/clients/06_design/04_settings/03_mls/propertyTypeMlsSettings.spec.ts:32:44
+```
+
+# Page snapshot
+
+```yaml
+- navigation:
+  - link "IDX Broker":
+    - /url: /mgmt/dashboard
+    - img "IDX Broker"
+  - list:
+    - listitem:
+      - text: Live
+      - strong: "Signed in as:"
+      - text: QA (64431)
+    - listitem:
+      - img
+- text: Notifications
+- strong: You’re all caught up! Keep an eye out for new notifications. We’ll post them here.
+- navigation:
+  - list:
+    - listitem: Home +
+    - listitem: Leads +
+    - listitem: Listings +
+    - listitem: Messages +
+    - listitem:
+      - link "MLS":
+        - /url: /mgmt/mls-membership
+    - listitem: Design -
+    - listitem: Account +
+    - listitem: Support +
+- listitem:
+  - link "Page Help":
+    - /url: "#"
+- heading "MLS Settings Customize the MLS's on your account" [level=1]
+- list:
+  - listitem:
+    - link "MLS Renaming":
+      - /url: "#mls"
+  - listitem:
+    - link "Property Types":
+      - /url: "#propTypes"
+  - listitem:
+    - link "Core Fields":
+      - /url: "#coreFields"
+  - listitem:
+    - link "MLS Advanced Fields":
+      - /url: "#advancedFields"
+- heading "Property Types Customize each MLS's property types" [level=2]
+- grid:
+  - paragraph:
+    - text: Working on
+    - link "Regional Multiple Listing Service":
+      - /url: javascript:void(0)
+    - button "Regional Multiple Listing Service"
+    - combobox:
+      - option "All MLS's"
+      - option "Regional Multiple Listing Service" [selected]
+  - text: "Search:"
+  - textbox "Search:"
+  - table:
+    - rowgroup:
+      - row "&nbsp; Order Visible Default Property Type Display Default Min Price Default Max Price ID Core Fields":
+        - columnheader "&nbsp;"
+        - columnheader "Order"
+        - columnheader "Visible"
+        - columnheader "Default"
+        - columnheader "Property Type"
+        - columnheader "Display"
+        - columnheader "Default Min Price"
+        - columnheader "Default Max Price"
+        - columnheader "ID"
+        - columnheader "Core Fields"
+    - alert:
+      - row " 1 Residential Residential 1 ":
+        - cell ""
+        - cell "1"
+        - cell:
+          - checkbox [checked]
+        - cell:
+          - radio
+        - cell "Residential"
+        - cell "Residential"
+        - cell:
+          - textbox
+        - cell:
+          - textbox
+        - cell "1"
+        - cell "":
+          - link "":
+            - /url: "#"
+      - row " 2 Commercial Sale Commercial Sale 3 ":
+        - cell ""
+        - cell "2"
+        - cell:
+          - checkbox [checked]
+        - cell:
+          - radio
+        - cell "Commercial Sale"
+        - cell "Commercial Sale"
+        - cell:
+          - textbox
+        - cell:
+          - textbox
+        - cell "3"
+        - cell "":
+          - link "":
+            - /url: "#"
+      - row " 3 Multi Family Multi Family 5 ":
+        - cell ""
+        - cell "3"
+        - cell:
+          - checkbox [checked]
+        - cell:
+          - radio
+        - cell "Multi Family"
+        - cell "Multi Family"
+        - cell:
+          - textbox
+        - cell:
+          - textbox
+        - cell "5"
+        - cell "":
+          - link "":
+            - /url: "#"
+      - row " 4 Land Land 4 ":
+        - cell ""
+        - cell "4"
+        - cell:
+          - checkbox [checked]
+        - cell:
+          - radio
+        - cell "Land"
+        - cell "Land"
+        - cell:
+          - textbox
+        - cell:
+          - textbox
+        - cell "4"
+        - cell "":
+          - link "":
+            - /url: "#"
+  - text: 4 total property types
+- paragraph:
+  - text: Services © 2025
+  - link "IDX Broker":
+    - /url: https://www.idxbroker.com
+  - text: . All rights reserved.
+- status
+- status
+```
+
+# Test source
+
+```ts
+   1 | import { test, allure, USER_GROUPS_CONFIG } from '@fixtures/usersFixture';
+   2 | import { expect } from '@playwright/test';
+   3 |
+   4 | const clientsGroup = USER_GROUPS_CONFIG['engageNew'];
+   5 |
+   6 | // Iterate over the clients defined in the user group
+   7 | for (const { name, storageState, domain } of clientsGroup) {
+   8 |     test.describe.serial(`MLS Property Type Settings Test - User: ${name}`, () => {
+   9 |         test.use({ storageState });
+   10 |         
+   11 |         // Removed explicit type annotation for client fixture
+   12 |         test(`Should change property types order and verify it on front-end search page - User: ${name}`, async ({ client }) => {
+   13 |             await allure.epic("Type of user: Client");
+   14 |             await allure.feature("MW Menu: 06_Design");
+   15 |             await allure.story("Sub-menu: 04_Settings -> 03_MLS");
+   16 |
+   17 |             await client.mlsSettingsPage.goto();
+   18 |             
+   19 |             await client.mlsSettingsPage.goToPropertyTypesTab();
+   20 |
+   21 |             const rowNumber1 = 4;
+   22 |             const rowNumber2 = 3;
+   23 |
+   24 |             const propertyType1 = await client.mlsSettingsPage.getPropertyTypeByRow(rowNumber1);
+   25 |             const propertyType2 = await client.mlsSettingsPage.getPropertyTypeByRow(rowNumber2);
+   26 |             
+   27 |             await client.mlsSettingsPage.dragRowToTargetRow(rowNumber1.toString(), rowNumber2.toString());
+   28 |
+   29 |             const propertyType1AfterDrag = await client.mlsSettingsPage.getPropertyTypeByRow(rowNumber1);
+   30 |             const propertyType2AfterDrag = await client.mlsSettingsPage.getPropertyTypeByRow(rowNumber2);
+   31 |
+>  32 |             expect(propertyType2AfterDrag).toBe(propertyType1);
+      |                                            ^ Error: expect(received).toBe(expected) // Object.is equality
+   33 |             expect(propertyType1AfterDrag).toBe(propertyType2);
+   34 |
+   35 |             await client.frontEndAdvancedSearchPage.goto(domain);
+   36 |
+   37 |             await client.frontEndAdvancedSearchPage.clickPropertyTypeDropdown();
+   38 |
+   39 |             const propertyType1FrontEnd = await client.frontEndAdvancedSearchPage.getSelectOptionByRow(rowNumber1);
+   40 |             const propertyType2FrontEnd = await client.frontEndAdvancedSearchPage.getSelectOptionByRow(rowNumber2);
+   41 |
+   42 |             expect(propertyType2FrontEnd).toBe(propertyType1);
+   43 |             expect(propertyType1FrontEnd).toBe(propertyType2);
+   44 |         });
+   45 |
+   46 |         test(`Verifiy the default property types for a new user - User: ${name}`, async ({ client }) => {
+   47 |             await allure.epic("Type of user: Client");
+   48 |             await allure.feature("MW Menu: 06_Design");
+   49 |             await allure.story("Sub-menu: 04_Settings -> 03_MLS");
+   50 |
+   51 |             await client.mlsSettingsPage.goto();
+   52 |
+   53 |             await client.mlsSettingsPage.goToPropertyTypesTab();
+   54 |
+   55 |             // Property types to verify as default
+   56 |             const propertyTypesToVerifyAsDefault = [
+   57 |                 'Residential',
+   58 |                 'Commercial Sale',
+   59 |                 'Land',
+   60 |                 'Multi Family'
+   61 |             ];
+   62 |
+   63 |             // Verify the table row count matches the expected default property types count
+   64 |             const tableRowCount = await client.mlsSettingsPage.getPropertyTypeRowCount();
+   65 |             expect(tableRowCount).toBe(propertyTypesToVerifyAsDefault.length);
+   66 |
+   67 |             // Verify each property type is present
+   68 |             for (const propertyType of propertyTypesToVerifyAsDefault) {
+   69 |                 expect(await client.mlsSettingsPage.isPropertyTypeVisible(propertyType)).toBe(true);
+   70 |             }
+   71 |             
+   72 |         })
+   73 |
+   74 |         test(`Uncheck property types and verify they are not present on front-end search page - User: ${name}`, async ({ client }) => {
+   75 |             await allure.epic("Type of user: Client");
+   76 |             await allure.feature("MW Menu: 06_Design");
+   77 |             await allure.story("Sub-menu: 04_Settings -> 03_MLS");
+   78 |
+   79 |             await client.mlsSettingsPage.goto();
+   80 |
+   81 |             await client.mlsSettingsPage.goToPropertyTypesTab();
+   82 |
+   83 |             // Property types to uncheck based on the recording
+   84 |             const propertyTypesToUncheck = [
+   85 |                 'Commercial Sale'
+   86 |             ];
+   87 |
+   88 |             // Uncheck multiple property types
+   89 |             await client.mlsSettingsPage.uncheckMultiplePropertyTypes(propertyTypesToUncheck);
+   90 |
+   91 |             // Verify each property type is unchecked
+   92 |             for (const propertyType of propertyTypesToUncheck) {
+   93 |                 expect(await client.mlsSettingsPage.isPropertyTypeVisible(propertyType)).toBe(false);
+   94 |             }
+   95 |
+   96 |             // Navigate to front-end and verify
+   97 |             await client.frontEndAdvancedSearchPage.goto(domain);
+   98 |
+   99 |             // Open the property type dropdown
+  100 |             await client.frontEndAdvancedSearchPage.clickPropertyTypeDropdown();
+  101 |
+  102 |             // Verify each unchecked property type is not present in the dropdown
+  103 |             for (const propertyType of propertyTypesToUncheck) {
+  104 |                 const isPresent = await client.frontEndAdvancedSearchPage.isPropertyTypePresent(propertyType);
+  105 |                 expect(isPresent).toBe(false);
+  106 |             }
+  107 |
+  108 |             // Verify that Residential (which wasn't unchecked) is still present
+  109 |             expect(await client.frontEndAdvancedSearchPage.isPropertyTypePresent('Residential')).toBe(true);
+  110 |
+  111 |             // Go back to middleware and check all property types again
+  112 |             await client.mlsSettingsPage.goto();
+  113 |             await client.mlsSettingsPage.goToPropertyTypesTab();
+  114 |             
+  115 |             // Check all property types again
+  116 |             await client.mlsSettingsPage.checkMultiplePropertyTypes(propertyTypesToUncheck);
+  117 |
+  118 |             // Verify all property types are checked
+  119 |             for (const propertyType of propertyTypesToUncheck) {
+  120 |                 expect(await client.mlsSettingsPage.isPropertyTypeVisible(propertyType)).toBe(true);
+  121 |             }
+  122 |         });
+  123 |     });         
+  124 | }
+  125 |
+  126 |
+```
